@@ -21,6 +21,7 @@ jobs:
 workflows:
   build-n-deploy:
     jobs:
+      - build
       - publish:
           requires:
             - build
