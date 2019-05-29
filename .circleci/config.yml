@@ -21,10 +21,6 @@ jobs:
 workflows:
   build-n-deploy:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /.*/
       - publish:
           requires:
             - build
