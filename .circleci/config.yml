@@ -12,21 +12,20 @@ jobs:
     steps:
       - checkout
       - run: echo "run test"
-  deploy:
+  publish:
     docker:
       - image: circleci/node:10.15
     steps:
       - checkout
       - run: echo "run deploy"
 workflows:
-  version: 2
   build-n-deploy:
     jobs:
       - build:
-          filters:  # required since `deploy` has tag filters AND requires `build`
+          filters:
             tags:
               only: /.*/
-      - deploy:
+      - publish:
           requires:
             - build
           filters:
